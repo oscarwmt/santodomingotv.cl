@@ -1,15 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-const Navbar = () => {
+export default function Navbar() {
   return (
-    <nav className="bg-blue-600 p-4">
-      <ul className="flex space-x-4 text-white">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-      </ul>
-    </nav>
+    <header className="bg-blue-700 text-white p-4">
+      <h1 className="text-2xl font-bold">SantoDomingoTV</h1>
+    </header>
   );
-};
-
-export default Navbar;
+}

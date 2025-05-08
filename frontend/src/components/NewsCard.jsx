@@ -1,15 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-const NewsCard = ({ newsItem }) => {
+export default function NewsCard({ noticia }) {
   return (
-    <div className="bg-white p-4 rounded-md shadow-lg">
-      <img src={newsItem.imagenDestacada} alt={newsItem.titulo} className="w-full h-48 object-cover rounded-md" />
-      <h3 className="text-xl font-semibold mt-2">{newsItem.titulo}</h3>
-      <p className="text-gray-500 mt-1">{newsItem.descripcion}</p>
-      <Link to={`/news/${newsItem.id}`} className="text-blue-600 mt-2 inline-block">Ver más</Link>
+    <div className="bg-white rounded-lg shadow p-4">
+      <img
+        src={`/uploads/${noticia.imagen_destacada}`}
+        alt={noticia.titulo}
+        className="w-full h-48 object-cover rounded"
+      />
+      <h2 className="text-xl font-bold mt-2">{noticia.titulo}</h2>
+      <p className="text-gray-600 text-sm">{noticia.creado_en?.slice(0, 10)}</p>
+      <p className="mt-2">{noticia.contenido.slice(0, 100)}...</p>
     </div>
   );
-};
-
-export default NewsCard;
+}
