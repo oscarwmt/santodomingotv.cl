@@ -1,25 +1,18 @@
+// backend/middlewares/uploadMiddleware.js
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
-
-// Asegura que la carpeta uploads existe
-const uploadPath = path.join(__dirname, '..', 'uploads');
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath);
-}
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadPath);
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/noticias/');
   },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+  filename: function (req, file, cb) {
     const ext = path.extname(file.originalname);
-    const base = path.basename(file.originalname, ext).replace(/\s+/g, '-');
-    cb(null, `${base}-${uniqueSuffix}${ext}`);
-  }
+    const name = file.originalname.replace(ext, '').replace(/\s+/g, '_');
+    cb(null, `${Date.now()}_${name}${ext}`);
+  },
 });
 
 const upload = multer({ storage });
 
-module.exports = upload;
+module.exports = { upload };

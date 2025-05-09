@@ -7,32 +7,34 @@ import SidebarRight from "./components/SidebarRight";
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="container">
       {/* NAVBAR */}
-      <Navbar />
+      <header className="navbar">
+        <Navbar />
+      </header>
 
-      {/* CONTENIDO CENTRAL */}
-      <main className="flex-1 container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* SIDEBAR IZQUIERDO */}
-          <aside className="md:col-span-1 hidden md:block">
-            <Sidebarleft />
-          </aside>
+      {/* CONTENIDO PRINCIPAL */}
+      <main className="main">
+        {/* SIDEBAR IZQUIERDO */}
+        <aside className="sidebar-left">
+          <Sidebarleft />
+        </aside>
 
-          {/* NOTICIAS PRINCIPALES */}
-          <section className="md:col-span-2">
-            <NewsList />
-          </section>
+        {/* SECCIÓN DE NOTICIAS */}
+        <section className="content">
+          <NewsList />
+        </section>
 
-          {/* SIDEBAR DERECHO */}
-          <aside className="md:col-span-1 hidden md:block">
-            <SidebarRight />
-          </aside>
-        </div>
+        {/* SIDEBAR DERECHO */}
+        <aside className="sidebar-right">
+          <SidebarRight />
+        </aside>
       </main>
 
       {/* FOOTER */}
-      <Footer />
+      <footer className="footer">
+        <Footer />
+      </footer>
     </div>
   );
 }
